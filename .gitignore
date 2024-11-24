@@ -1,0 +1,23 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# GenAI
+.files
+.env
+
+# ruff
+.ruff_cache/
+
+# data
+data/items_db
+
+# test customer data
+app/test_customer.json

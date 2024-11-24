@@ -1,0 +1,46 @@
+services:
+  app:
+    build:
+      context: ./app
+    volumes:
+      - ./app:/app
+    env_file:
+      - .env
+    environment:
+      - CHROMA_HOST=chroma
+      - CHROMA_PORT=8000
+      - COLLECTION_NAME=items
+    ports:
+      - 127.0.0.1:8001:8000
+    depends_on:
+      - chroma-init
+
+  chroma:
+    image: chromadb/chroma:0.5.20
+    volumes:
+      - chroma-data:/chroma/chroma
+    environment:
+      - ANONYMIZED_TELEMETRY=false
+    ports:
+      - 127.0.0.1:8000:8000
+    healthcheck:
+      # Adjust below to match your container port
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/api/v2/heartbeat" ]
+      start_period: 3s
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  chroma-init:
+    build:
+      context: ./chroma
+    environment:
+      - CHROMA_HOST=chroma
+      - CHROMA_PORT=8000
+      - COLLECTION_NAME=items
+    depends_on:
+      chroma:
+        condition: service_healthy
+
+volumes:
+  chroma-data:
