@@ -67,7 +67,7 @@ def purchase_items(item: Item, customer: Customer, config: RunnableConfig) -> No
     """
     payjp.api_key = os.getenv("PAYJP_API_KEY")
     try:
-        charge = payjp.Charge.create(
+        _ = payjp.Charge.create(
             amount=item.price,
             customer=customer.id,
             currency="jpy",

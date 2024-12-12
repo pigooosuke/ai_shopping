@@ -1,6 +1,5 @@
 import csv
 import os
-from typing import Any, Dict, List
 
 import chromadb
 from chromadb.api.models import Collection
@@ -55,7 +54,7 @@ class ChromaInitializer:
             print(f"Created new collection '{self.config.collection_name}'")
         return collection
 
-    def _prepare_item_data(self, item: Item) -> tuple[str, Dict[str, Any], str]:
+    def _prepare_item_data(self, item: Item) -> tuple[str, dict, str]:
         """Prepare item data for ChromaDB"""
         text_to_embed = f"{item.title} {item.category} {item.description}"
         metadata = {
@@ -66,7 +65,7 @@ class ChromaInitializer:
         }
         return text_to_embed, metadata, item.id
 
-    def _load_items_from_csv(self) -> List[tuple[str, Dict[str, Any], str]]:
+    def _load_items_from_csv(self) -> [tuple[str, dict, str]]:
         """Load and process items from CSV file"""
         items_data = []
         with open(self.config.data_path, "r") as csvfile:

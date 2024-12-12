@@ -19,6 +19,14 @@ class Item(BaseModel):
     price: int
     description: str
 
+    def format_info(self) -> str:
+        """商品情報を出力"""
+        return f"""
+            {self.title} ({self.price}円)
+            カテゴリー: {self.category}
+            商品説明: {self.description}
+        """.strip()
+
 
 class ItemMetadata(BaseModel):
     id: int
