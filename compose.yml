@@ -4,6 +4,7 @@ services:
       context: ./app
     volumes:
       - ./app:/app
+      - /app/.venv
     env_file:
       - .env
     environment:
@@ -24,7 +25,6 @@ services:
     ports:
       - 127.0.0.1:8000:8000
     healthcheck:
-      # Adjust below to match your container port
       test: [ "CMD", "curl", "-f", "http://localhost:8000/api/v2/heartbeat" ]
       start_period: 3s
       interval: 30s

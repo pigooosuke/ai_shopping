@@ -11,7 +11,7 @@ dependencies = [
     "langchain>=0.3.7",
     "langgraph>=0.2.53",
     "payjp>=0.5.0",
-    "pydantic>=2.10.1",
+    "pydantic==2.10.1",
 ]
 
 [dependency-groups]
