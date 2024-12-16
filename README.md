@@ -1,6 +1,6 @@
 # About
 AIショッピングアシスタントの作り方 - PAY.JPとLLMで実現する新しい購買体験  
-URLを貼る
+https://qiita.com/pigooosuke/items/5a7173e5ee1c5a95a938
 
 ## 使い方
 ### required
